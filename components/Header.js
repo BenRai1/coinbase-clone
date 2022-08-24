@@ -1,8 +1,8 @@
 import React from "react"
 
 const styles = {
-    wrapper: ` border-b border-b-[#a3e635] py-3 px-2 items-center flex justify-between bg-pink-500 `,
-    title: `text-4xl font-bold flex-1 border`,
+    wrapper: ` border-b-2 border-b-[#292b2f] py-3 px-[1rem] items-center flex justify-between `,
+    title: `text-4xl font-bold flex-1 `,
     buttonContainer: `flex justify-border`,
     walletContainer: `border border-[#27ad75] rounded-full px-5`,
     walletConnected: `font-bold text-[#16a34a] `,

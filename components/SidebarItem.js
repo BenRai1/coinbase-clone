@@ -9,7 +9,7 @@ const styles = {
 const SidebarItem = ({ title, icon, activeIcon }) => {
     return (
         <div className={styles.sidebarItem}>
-            <div className={styles.icon} style={{ color: title === activeIcon && "#3773f5" }}>
+            <div className={styles.icon} style={{ color: title === activeIcon && "#a3e635" }}>
                 {icon}
             </div>
             <div className={styles.title}>{title}</div>

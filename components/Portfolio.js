@@ -14,7 +14,7 @@ const styles = {
     flex3: `flex-[2]`,
 }
 
-const YourAssets = () => {
+const Porfolio = () => {
     return (
         <div className={styles.main}>
             <div className={styles.title}>YourAssets</div>
@@ -28,10 +28,10 @@ const YourAssets = () => {
                 </div>
             </div>
             <div>
-                {coins.map((coin) => {
+                {coins.map((coin, index) => {
                     return (
                         <div>
-                            <Coin coin={coin} />
+                            <Coin coin={coin} key={index} />
                         </div>
                     )
                 })}
@@ -40,4 +40,4 @@ const YourAssets = () => {
     )
 }
 
-export default YourAssets
+export default Porfolio

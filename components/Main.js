@@ -1,20 +1,27 @@
 import React from "react"
 
 import BalanceChart from "../components/BalanceChart"
-import YourAssets from "./Portfolio"
+import Portfolio from "./Portfolio"
 import Promos from "../components/Promos"
 
 const styles = {
-    main: ` bg-green-500 flex justify-center overflow-y-auto `,
-    chart: `border mr-[2rem] justify-center mt-[1rem]`,
+    main: `flex justify-center  `,
+    chart: `ml-[1rem] mr-[2rem] mt-[1rem] `,
+    balanceChart: ``,
 }
 
-const Main = () => {
+const Main = ({ walletAddress, thirdWebTokens, sanityTokens }) => {
     return (
         <div className={styles.main}>
             <div className={styles.chart}>
-                <BalanceChart />
-                <YourAssets />
+                <div className={styles.balanceChart}>
+                    <BalanceChart
+                        walletAddress={walletAddress}
+                        sanityTokens={sanityTokens}
+                        thirdWebTokens={thirdWebTokens}
+                    />
+                </div>
+                <Portfolio />
             </div>
             <Promos />
         </div>

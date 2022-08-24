@@ -7,7 +7,10 @@
   },
   "dependencies": {
     "@3rdweb/hooks": "^1.9.2",
+    "@3rdweb/sdk": "^1.42.1",
+    "@sanity/client": "^3.3.3",
     "chart.js": "^3.9.1",
+    "ethers": "^5.7.0",
     "next": "latest",
     "react": "18.1.0",
     "react-chartjs-2": "^4.3.1",

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { Line } from "react-chartjs-2"
 import Chart from "chart.js/auto"
+import { ThirdwebSDK } from "@3rdweb/sdk"
+import { ethers, getDefaultProvider } from "ethers"
+
 const data = {
     labels: [`Nov`, `Dec`, `Jan`, `Feb`, `Mar`, `Apr`, `May`, `Jun`, `Jul`, `Aug`],
     datasets: [
@@ -30,37 +33,40 @@ const options = { plugins: { legend: { display: false } } }
 
 const styles = {
     wrapper: ``,
-    balance: ` border border-[#282b2f] rounded-lg`,
-    balanceTitle: `text-[#8a919e]`,
-    balanceValue: `text-[1.8rem] font-bold my-[0.5rem] `,
+    balance: ` p-[1rem] border border-[#282b2f] rounded-lg`,
+    balanceTitle: ` text-[#8a919e]`,
+    balanceValue: ` text-[1.8rem] font-bold mb-[0.25rem] `,
 }
 
-const BalanceChart = () => {
-    const [sanityTokens, setSanityTokens] = useState([])
+const BalanceChart = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
+    const [walletBalance, setWalletBallance] = useState(0)
+
+    const tokenToUSD = {}
+
+    for (const token of sanityTokens) {
+        tokenToUSD[token.contractAddress] = Number(token.usdPrice)
+    }
 
     useEffect(() => {
-        console.log("check")
-        // const getCoins = async () => {
-        //     try {
-        //         const coins = await fetch(
-        //             "https://eanwvhaq.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D'coins'%5D%7B%0A%20%20name%2C%20%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%20%0A%20%20symbol%2C%20%0A%20%20logo%7D"
-        //         )
-        //         const tempSanityTokens = await coins.json()
-        //         setSanityTokens(tempSanityTokens.result)
-        //         console.log(tempSanityTokens.result)
-        //     } catch (error) {
-        //         console.log(error)
-        //     }
-        // }
-        // return getCoins()
-    }, [])
+        async function calculateTotalBalance() {
+            const totalBalance = await Promise.all(
+                thirdWebTokens.map(async (token) => {
+                    const balance = await token.balanceOf(walletAddress)
+                    return Number(balance.displayValue) * tokenToUSD[token.address]
+                })
+            )
+            console.log("total Balance", totalBalance)
+            setWalletBallance(totalBalance.reduce((acc, curr) => acc + curr, 0))
+        }
+        calculateTotalBalance()
+    }, [thirdWebTokens, sanityTokens])
+
+    console.log("Token to USD:", tokenToUSD)
     return (
         <div className={styles.wrapper}>
             <div className={styles.balance}>
                 <div className={styles.balanceTitle}>Portfolio balance</div>
-                <div className={styles.balanceValue}>
-                    $ 600.000{/* {walletBalance.toLocalString()} */}
-                </div>
+                <div className={styles.balanceValue}>$ {walletBalance.toLocaleString()}</div>
                 <Line data={data} options={options} width={400} height={200}></Line>
             </div>
         </div>
