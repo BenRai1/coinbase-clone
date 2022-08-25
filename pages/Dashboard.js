@@ -16,7 +16,7 @@ import Main from "../components/Main"
 const styles = {
     wrapper: `flex color-white bg-[#0a0b0d] w-full`,
     containerRight: `flex-1 pb-[1rem]  ml-60 border-l-2 border-l-[#292b2f]`,
-    sidebar: `fixed top-0 left-0   w-60 `,
+    sidebar: ` fixed top-0 left-0   w-60 `,
     header: `sticky top-0 bg-[#0a0b0d]`,
     main: ``,
 }
