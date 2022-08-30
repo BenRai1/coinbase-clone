@@ -6,7 +6,7 @@ const styles = {
     title: `font-bold`,
 }
 
-const SidebarItem = ({ title, icon, activeIcon }) => {
+const SidebarItem = ({ title, icon, activeIcon, key }) => {
     return (
         <div className={styles.sidebarItem}>
             <div className={styles.icon} style={{ color: title === activeIcon && "#a3e635" }}>

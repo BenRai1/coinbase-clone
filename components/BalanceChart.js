@@ -55,13 +55,13 @@ const BalanceChart = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
                     return Number(balance.displayValue) * tokenToUSD[token.address]
                 })
             )
-            console.log("total Balance", totalBalance)
+            // console.log("total Balance", totalBalance)
             setWalletBallance(totalBalance.reduce((acc, curr) => acc + curr, 0))
         }
         calculateTotalBalance()
     }, [thirdWebTokens, sanityTokens])
 
-    console.log("Token to USD:", tokenToUSD)
+    // console.log("Token to USD:", tokenToUSD)
     return (
         <div className={styles.wrapper}>
             <div className={styles.balance}>

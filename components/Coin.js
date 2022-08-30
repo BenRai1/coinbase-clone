@@ -12,7 +12,7 @@ const styles = {
     secondRow: `text-s text-[#3f3f46]`,
 }
 
-const Coin = ({ coin }) => {
+const Coin = ({ coin, key }) => {
     const { name, sign, logo, balanceUsd, balanceCoin, priceUsd, change, allocation } = coin
     return (
         <div className={styles.asset}>

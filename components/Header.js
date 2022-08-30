@@ -32,8 +32,9 @@ const customStyles = {
     },
 }
 
-const Header = ({ address }) => {
+const Header = ({ address, sanityTokens, thirdWebTokens }) => {
     const router = useRouter()
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>Assets</div>
@@ -54,7 +55,11 @@ const Header = ({ address }) => {
                 onRequestClose={() => router.push("/")}
                 style={customStyles}
             >
-                <TransferModal />
+                <TransferModal
+                    sanityTokens={sanityTokens}
+                    thirdWebTokens={thirdWebTokens}
+                    address={address}
+                />
             </Modal>
         </div>
     )

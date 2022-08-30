@@ -22,13 +22,14 @@ const Sidebar = () => {
             </div>
             <div className={styles.scrollContainer}>
                 <div className={styles.items}>
-                    {navItems.map((item) => {
+                    {navItems.map((item, index) => {
                         return (
                             <div onClick={() => setActiveIcon(item.title)}>
                                 <SidebarItem
                                     title={item.title}
                                     icon={item.icon}
                                     activeIcon={activeIcon}
+                                    key={index}
                                 />
                             </div>
                         )

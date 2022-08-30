@@ -37,8 +37,7 @@ const Dashboard = ({ address }) => {
         }
         getSanityAndThirdWebTokens()
     }, [])
-    console.log("Sanity tokens", sanityTokens)
-    console.log("Third Web Tokens", thirdWebTokens)
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.sidebar}>

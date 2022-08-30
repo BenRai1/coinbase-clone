@@ -31,7 +31,7 @@ const Porfolio = () => {
                 {coins.map((coin, index) => {
                     return (
                         <div>
-                            <Coin coin={coin} key={index} />
+                            <Coin key={index} coin={coin} />
                         </div>
                     )
                 })}
